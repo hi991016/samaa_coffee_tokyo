@@ -9,6 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+  scrollbar-color: auto;
+  scrollbar-width: auto;
 }
 
 html {
@@ -32,14 +34,6 @@ body {
   letter-spacing: 0;
   position: relative;
   overflow-x: hidden;
-
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
 }
 
 ::selection {
