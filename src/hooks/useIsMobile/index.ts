@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useIsMobile = (breakpoint: number = 1023): boolean => {
+const useIsMobile = (breakpoint: number = 1023): boolean => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -17,3 +17,5 @@ export const useIsMobile = (breakpoint: number = 1023): boolean => {
 
   return isMobile
 }
+
+export default useIsMobile

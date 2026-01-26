@@ -1,3 +1,3 @@
-import { useIsMobile } from './useIsMobile'
+import useIsMobile from './useIsMobile'
 
 export { useIsMobile }

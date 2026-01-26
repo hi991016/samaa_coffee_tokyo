@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Keyboard } from 'swiper/modules'
+import { Keyboard, HashNavigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 
@@ -41,7 +41,7 @@ const DesktopLayout: React.FC = () => {
   return (
     <div className={styles.container} onClick={handleNavigationSwiper}>
       <Swiper
-        modules={[Keyboard]}
+        modules={[Keyboard, HashNavigation]}
         slidesPerView={1}
         speed={0}
         loop={true}
@@ -51,7 +51,8 @@ const DesktopLayout: React.FC = () => {
           onlyInViewport: true
         }}
         hashNavigation={{
-          watchState: true
+          watchState: true,
+          replaceState: true
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper
