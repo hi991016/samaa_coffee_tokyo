@@ -1,10 +1,10 @@
 /* -------------------------------- sections -------------------------------- */
-import { Hero } from 'src/sections'
+import { Top } from 'src/sections'
 
 const App: React.FC = () => {
   return (
     <div>
-      <Hero />
+      <Top />
     </div>
   )
 }

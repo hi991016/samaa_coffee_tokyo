@@ -1,6 +1,6 @@
-import styles from './Hero.module.css'
+import styles from './top.module.scss'
 
-const Hero: React.FC = () => {
+const Top: React.FC = () => {
   return (
     <div className={styles.container}>
       <h1>SAMAA_COFFEE</h1>
@@ -8,4 +8,4 @@ const Hero: React.FC = () => {
   )
 }
 
-export default Hero
+export default Top

@@ -1,3 +1,3 @@
-import Hero from './Hero'
+import Top from './Top'
 
-export { Hero }
+export { Top }
