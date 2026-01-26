@@ -1,7 +1,10 @@
+/* -------------------------------- sections -------------------------------- */
+import { Hero } from 'src/sections'
+
 const App: React.FC = () => {
   return (
     <div>
-      <h1>SAMAA_COFFEE</h1>
+      <Hero />
     </div>
   )
 }
