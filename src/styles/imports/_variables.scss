@@ -2,11 +2,12 @@
   --app-height: 100vh;
   --menu-height: 100vh;
 
-  --main-fonts:
-    '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', sans-serif;
+  --main-fonts: 'Overpass Mono', ui-monospace, monospace;
+  --swiss-fonts: 'swiss-721-bt', sans-serif;
+  --noto-fonts: 'Noto Sans JP', system-ui, sans-serif;
+  --m-plus-fonts: 'M PLUS 1p', sans-serif;
 
-  --main-bg-cl: #fff;
-  --main-text-cl: #000;
-  --black-cl: #000;
+  --main-bg-cl: #fcfaf1;
+  --main-text-cl: #e03c31;
   --white-cl: #fff;
 }

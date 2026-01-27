@@ -50,10 +50,10 @@ const DesktopLayout: React.FC = () => {
           enabled: true,
           onlyInViewport: true
         }}
-        hashNavigation={{
-          watchState: true,
-          replaceState: true
-        }}
+        // hashNavigation={{
+        //   watchState: true,
+        //   replaceState: true
+        // }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper
         }}
