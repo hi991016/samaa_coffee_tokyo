@@ -1,7 +1,7 @@
 @use '@/styles/imports/mixins' as *;
 
 .container {
-  background-image: url('src/assets/images/story/bg.webp');
+  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

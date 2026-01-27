@@ -49,6 +49,11 @@ const DesktopLayout: React.FC = () => {
   const handleNavigationSwiper = (e: React.MouseEvent) => {
     if (!swiperRef.current) return
 
+    const target = e.target as HTMLElement
+    if (target.closest('a')) {
+      return
+    }
+
     const isLeftHalf = e.clientX < window.innerWidth / 2
 
     if (isLeftHalf) {
