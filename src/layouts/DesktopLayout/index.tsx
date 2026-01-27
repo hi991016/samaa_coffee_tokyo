@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Keyboard, HashNavigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 
+import { CustomCursor } from 'src/components'
 import { Hero, Intro, Menu, Story, Product, Contact } from 'src/sections'
 import styles from './desktop.module.scss'
 
@@ -24,6 +25,23 @@ const slideConfigs: SlideConfigsProps[] = [
 
 const DesktopLayout: React.FC = () => {
   const swiperRef = useRef<SwiperType | null>(null)
+  const [isLeftHalf, setIsLeftHalf] = useState(false)
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+  const [isHoveringLink, setIsHoveringLink] = useState(false)
+
+  // ===== detect hover on links =====
+  useEffect(() => {
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target.closest('a, button, [role="button"]')) {
+        setIsHoveringLink(true)
+      } else {
+        setIsHoveringLink(false)
+      }
+    }
+    document.addEventListener('mouseover', handleMouseOver)
+    return () => document.removeEventListener('mouseover', handleMouseOver)
+  }, [])
 
   // ===== handle next/prev swiper =====
   const handleNavigationSwiper = (e: React.MouseEvent) => {
@@ -38,8 +56,15 @@ const DesktopLayout: React.FC = () => {
     }
   }
 
+  // ===== handle mouse move =====
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setCursorPos({ x: e.clientX, y: e.clientY })
+    setIsLeftHalf(e.clientX < window.innerWidth / 2)
+  }
+
   return (
-    <div className={styles.container} onClick={handleNavigationSwiper}>
+    <div className={styles.container} onClick={handleNavigationSwiper} onMouseMove={handleMouseMove}>
+      <CustomCursor isLeftHalf={isLeftHalf} position={cursorPos} isHidden={isHoveringLink} />
       <Swiper
         modules={[Keyboard, HashNavigation]}
         slidesPerView={1}
