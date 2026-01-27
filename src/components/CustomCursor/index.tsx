@@ -5,9 +5,10 @@ interface CustomCursorProps {
   isLeftHalf: boolean
   position: { x: number; y: number }
   isHidden?: boolean
+  invertColor?: boolean
 }
 
-const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHidden = false }) => {
+const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHidden = false, invertColor = false }) => {
   const cursorRef = useRef<HTMLDivElement>(null)
 
   // ===== smooth cursor =====
@@ -33,6 +34,8 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHid
     })
   }, [isHidden])
 
+  const strokeColor = invertColor ? '#ffffff' : '#e03c31'
+
   return (
     <div
       ref={cursorRef}
@@ -52,17 +55,17 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHid
               x1='50'
               transform='translate(0 10)'
               fill='none'
-              stroke='#e03c31'
+              stroke={strokeColor}
               strokeLinecap='round'
               strokeWidth='2'
             />
-            <line x1='10' y2='10' fill='none' stroke='#e03c31' strokeLinecap='round' strokeWidth='2' />
+            <line x1='10' y2='10' fill='none' stroke={strokeColor} strokeLinecap='round' strokeWidth='2' />
             <line
               x1='10'
               y1='10'
               transform='translate(0 10)'
               fill='none'
-              stroke='#e03c31'
+              stroke={strokeColor}
               strokeLinecap='round'
               strokeWidth='2'
             />
@@ -75,7 +78,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHid
               x2='50'
               transform='translate(1188 719)'
               fill='none'
-              stroke='#e03c31'
+              stroke={strokeColor}
               strokeLinecap='round'
               strokeWidth='2'
             />
@@ -84,7 +87,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHid
               y2='10'
               transform='translate(1228 709)'
               fill='none'
-              stroke='#e03c31'
+              stroke={strokeColor}
               strokeLinecap='round'
               strokeWidth='2'
             />
@@ -93,7 +96,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isLeftHalf, position, isHid
               x2='10'
               transform='translate(1228 719)'
               fill='none'
-              stroke='#e03c31'
+              stroke={strokeColor}
               strokeLinecap='round'
               strokeWidth='2'
             />

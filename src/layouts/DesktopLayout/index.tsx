@@ -12,15 +12,16 @@ interface SlideConfigsProps {
   id: string
   hash: string
   Component: React.ComponentType
+  invertColor?: boolean
 }
 
 const slideConfigs: SlideConfigsProps[] = [
   { id: '1', hash: 'hero', Component: Hero },
-  { id: '2', hash: 'intro', Component: Intro },
+  { id: '2', hash: 'intro', Component: Intro, invertColor: true },
   { id: '3', hash: 'menu', Component: Menu },
   { id: '4', hash: 'story', Component: Story },
   { id: '5', hash: 'product', Component: Product },
-  { id: '6', hash: 'contact', Component: Contact }
+  { id: '6', hash: 'contact', Component: Contact, invertColor: true }
 ]
 
 const DesktopLayout: React.FC = () => {
@@ -28,6 +29,7 @@ const DesktopLayout: React.FC = () => {
   const [isLeftHalf, setIsLeftHalf] = useState(false)
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [isHoveringLink, setIsHoveringLink] = useState(false)
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   // ===== detect hover on links =====
   useEffect(() => {
@@ -62,9 +64,17 @@ const DesktopLayout: React.FC = () => {
     setIsLeftHalf(e.clientX < window.innerWidth / 2)
   }
 
+  // ===== detect color cursor =====
+  const shouldInvertColor = slideConfigs[currentSlideIndex]?.invertColor || false
+
   return (
     <div className={styles.container} onClick={handleNavigationSwiper} onMouseMove={handleMouseMove}>
-      <CustomCursor isLeftHalf={isLeftHalf} position={cursorPos} isHidden={isHoveringLink} />
+      <CustomCursor
+        isLeftHalf={isLeftHalf}
+        position={cursorPos}
+        isHidden={isHoveringLink}
+        invertColor={shouldInvertColor}
+      />
       <Swiper
         modules={[Keyboard, HashNavigation]}
         slidesPerView={1}
@@ -75,12 +85,15 @@ const DesktopLayout: React.FC = () => {
           enabled: true,
           onlyInViewport: true
         }}
-        // hashNavigation={{
-        //   watchState: true,
-        //   replaceState: true
-        // }}
+        hashNavigation={{
+          watchState: true,
+          replaceState: true
+        }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper
+        }}
+        onSlideChange={(swiper) => {
+          setCurrentSlideIndex(swiper.realIndex)
         }}
       >
         {slideConfigs.map(({ id, hash, Component }) => (

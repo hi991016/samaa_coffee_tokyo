@@ -13,29 +13,27 @@ const Hero: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <div className={styles.wrapper}>
-        <BrandSideText />
-        <div className={styles.logo}>{View}</div>
-        <div className={styles.bottom}>
-          <div className={styles.icon}>
-            <p>☕️</p>
-            <p>🥯</p>
-            <p>🍷</p>
-            <p>♻️</p>
-          </div>
-          <div className={styles.address}>
-            <p>Open daily 9am-10pm</p>
-            <a
-              className='u-hovertxt'
-              href='https://maps.app.goo.gl/sfEYNpeuPDRX4Mhg9'
-              target='_blank'
-              rel='noopener noreferrer'
-              onClick={(e) => e.stopPropagation()}
-            >
-              1-33-7 Kamiuma, Setagaya,
-              <br /> Tokyo 1540011 Japan
-            </a>
-          </div>
+      <BrandSideText />
+      <div className={styles.logo}>{View}</div>
+      <div className={styles.bottom}>
+        <div className={styles.icon}>
+          <p>☕️</p>
+          <p>🥯</p>
+          <p>🍷</p>
+          <p>♻️</p>
+        </div>
+        <div className={styles.address}>
+          <p>Open daily 9am-10pm</p>
+          <a
+            className='u-hovertxt'
+            href='https://maps.app.goo.gl/sfEYNpeuPDRX4Mhg9'
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={(e) => e.stopPropagation()}
+          >
+            1-33-7 Kamiuma, Setagaya,
+            <br /> Tokyo 1540011 Japan
+          </a>
         </div>
       </div>
     </section>
