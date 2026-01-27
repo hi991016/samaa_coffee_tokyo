@@ -9,7 +9,6 @@ const App: React.FC = () => {
     const hasShownLoading = sessionStorage.getItem('isLoading')
     return hasShownLoading !== 'true'
   })
-  console.log('showLoading', showLoading)
 
   const handleLoadingComplete = () => {
     setShowLoading(false)

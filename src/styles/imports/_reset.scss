@@ -168,16 +168,9 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-// a,
-// a img {
-//   transition: opacity 0.3s ease-in-out;
-// }
-
-// a:hover,
-// a:hover img {
-//   opacity: 0.8;
-//   filter: alpha(opacity=80);
-// }
+a:hover {
+  transition: 0.2s ease-in-out;
+}
 
 button,
 fieldset,

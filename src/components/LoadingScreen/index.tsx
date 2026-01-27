@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { useLottie } from 'lottie-react'
-import animationData from 'src/assets/animation/loading.json'
+import loadingAnimation from 'src/assets/animation/loading.json'
 import styles from './loading.module.scss'
 
 interface LoadingScreenProps {
@@ -14,7 +14,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   }, [onComplete])
 
   const options = {
-    animationData: animationData,
+    animationData: loadingAnimation,
     loop: false,
     autoplay: false,
     onComplete: handleAnimationComplete

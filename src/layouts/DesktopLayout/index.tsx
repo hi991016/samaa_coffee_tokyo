@@ -7,13 +7,13 @@ import 'swiper/css'
 import { Hero, Intro, Menu, Story, Product, Contact } from 'src/sections'
 import styles from './desktop.module.scss'
 
-interface SlideConfig {
+interface SlideConfigsProps {
   id: string
   hash: string
   Component: React.ComponentType
 }
 
-const slideConfigs: SlideConfig[] = [
+const slideConfigs: SlideConfigsProps[] = [
   { id: '1', hash: 'hero', Component: Hero },
   { id: '2', hash: 'intro', Component: Intro },
   { id: '3', hash: 'menu', Component: Menu },

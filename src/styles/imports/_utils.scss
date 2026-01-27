@@ -1,5 +1,19 @@
 @use '@/styles/imports/mixins' as *;
 
+.u-hovertxt {
+  display: inline;
+  transition:
+    background 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--main-text-cl);
+    color: var(--main-bg-cl);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+}
+
 img.lazy {
   opacity: 0;
   transition: opacity 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955);
