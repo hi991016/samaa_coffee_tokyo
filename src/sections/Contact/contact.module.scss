@@ -1,1 +1,29 @@
 @use '@/styles/imports/mixins' as *;
+
+.container {
+  background-image: url('src/assets/images/contact/bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: 0.9px;
+  color: var(--white-cl);
+
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}

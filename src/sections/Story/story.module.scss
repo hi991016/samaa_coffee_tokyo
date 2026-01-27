@@ -1,1 +1,21 @@
 @use '@/styles/imports/mixins' as *;
+
+.container {
+  background-image: url('src/assets/images/story/bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.65;
+    letter-spacing: 0.9px;
+  }
+}

@@ -3,7 +3,14 @@ import styles from './contact.module.scss'
 const Contact: React.FC = () => {
   return (
     <section className={styles.container}>
-      <h2>Slide 6</h2>
+      <div className={styles.center}>
+        <a className='u-hovertxt' href='mailto:hello@samaa.world'>
+          hello@samaa.world
+        </a>
+      </div>
+      <div className={styles.bottom}>
+        <p>©︎ SAMAA_</p>
+      </div>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 import MobileInfiniteScroll from './MobileInfiniteScroll'
 import LoadingScreen from './LoadingScreen'
-import BrandSideText from './BrandSideText'
+import Header from './Header'
 import CustomCursor from './CustomCursor'
 
-export { MobileInfiniteScroll, LoadingScreen, BrandSideText, CustomCursor }
+export { MobileInfiniteScroll, LoadingScreen, Header, CustomCursor }

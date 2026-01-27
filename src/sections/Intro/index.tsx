@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { BrandSideText } from 'src/components'
+import { Header } from 'src/components'
 import styles from './intro.module.scss'
 
 const Intro: React.FC = () => {
@@ -19,7 +19,7 @@ const Intro: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <BrandSideText color='var(--white-cl)' />
+      <Header logo={false} sidebar={true} color='var(--white-cl)' />
       <div className={styles.desc}>
         <p>
           A cup of coffee shapes a beautiful future. Our vision of a beautiful future means balance - not perfection.

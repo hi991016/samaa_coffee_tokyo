@@ -1,5 +1,5 @@
 import { useLottie } from 'lottie-react'
-import { BrandSideText } from 'src/components'
+import { Header } from 'src/components'
 import logoAnimation from 'src/assets/animation/logo.json'
 import styles from './hero.module.scss'
 
@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <BrandSideText />
+      <Header logo={false} sidebar={true} />
       <div className={styles.logo}>{View}</div>
       <div className={styles.bottom}>
         <div className={styles.icon}>
