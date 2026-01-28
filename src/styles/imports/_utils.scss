@@ -1,5 +1,12 @@
 @use '@/styles/imports/mixins' as *;
 
+.fs {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.62;
+  letter-spacing: 0.62px;
+}
+
 .u-hovertxt {
   display: inline;
   transition:

@@ -35,7 +35,7 @@ const DesktopLayout: React.FC = () => {
   useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      if (target.closest('a, button, [role="button"]')) {
+      if (target.closest('a, button, [role="button"], [data-hover="disabled"]')) {
         setIsHoveringLink(true)
       } else {
         setIsHoveringLink(false)
