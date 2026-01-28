@@ -1,12 +1,12 @@
 import styles from './header.module.scss'
 
-interface BrandSideProps {
+interface HeaderProps {
   logo?: boolean
   sidebar?: boolean
   color?: string
 }
 
-const BrandSideText: React.FC<BrandSideProps> = ({ logo = false, sidebar = true, color }) => {
+const Header: React.FC<HeaderProps> = ({ logo = false, sidebar = true, color }) => {
   return (
     <div className={styles.container}>
       {logo && (
@@ -129,4 +129,4 @@ const BrandSideText: React.FC<BrandSideProps> = ({ logo = false, sidebar = true,
   )
 }
 
-export default BrandSideText
+export default Header

@@ -2,7 +2,7 @@
 
 .container {
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 43px;
     right: 40px;
     z-index: 10;
@@ -22,7 +22,7 @@
   }
 
   .logo {
-    position: fixed;
+    position: absolute;
     top: 45px;
     left: 50%;
     transform: translateX(-50%);

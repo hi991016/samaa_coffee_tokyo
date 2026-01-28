@@ -2,19 +2,24 @@ import { useRef, useEffect } from 'react'
 import { Header } from 'src/components'
 import styles from './product.module.scss'
 
+/* ---------------------------------- image --------------------------------- */
+import product1Img from 'src/assets/images/product/product-1.webp'
+import product2Img from 'src/assets/images/product/product-2.webp'
+import product3Img from 'src/assets/images/product/product-3.webp'
+
 const products = [
-  { id: 1, image: 'src/assets/images/product/product-1.webp', name: 'Wide Mouth Bottle 20oz' },
-  { id: 2, image: 'src/assets/images/product/product-2.webp', name: 'Sport Bottle 24oz' },
-  { id: 3, image: 'src/assets/images/product/product-3.webp', name: 'Travel Mug 16oz' },
-  { id: 4, image: 'src/assets/images/product/product-1.webp', name: 'Water Bottle 32oz' },
-  { id: 5, image: 'src/assets/images/product/product-2.webp', name: 'Coffee Cup 12oz' },
-  { id: 6, image: 'src/assets/images/product/product-3.webp', name: 'Insulated Bottle 25oz' },
-  { id: 7, image: 'src/assets/images/product/product-1.webp', name: 'Wide Mouth Bottle 20oz' },
-  { id: 8, image: 'src/assets/images/product/product-2.webp', name: 'Tumbler 20oz' },
-  { id: 9, image: 'src/assets/images/product/product-3.webp', name: 'Sports Flask 18oz' },
-  { id: 10, image: 'src/assets/images/product/product-1.webp', name: 'Hydro Bottle 30oz' },
-  { id: 11, image: 'src/assets/images/product/product-2.webp', name: 'Thermal Mug 14oz' },
-  { id: 12, image: 'src/assets/images/product/product-3.webp', name: 'Classic Bottle 22oz' }
+  { id: 1, image: product1Img, name: 'Wide Mouth Bottle 20oz' },
+  { id: 2, image: product2Img, name: 'Sport Bottle 24oz' },
+  { id: 3, image: product3Img, name: 'Travel Mug 16oz' },
+  { id: 4, image: product1Img, name: 'Water Bottle 32oz' },
+  { id: 5, image: product2Img, name: 'Coffee Cup 12oz' },
+  { id: 6, image: product3Img, name: 'Insulated Bottle 25oz' },
+  { id: 7, image: product1Img, name: 'Wide Mouth Bottle 20oz' },
+  { id: 8, image: product2Img, name: 'Tumbler 20oz' },
+  { id: 9, image: product3Img, name: 'Sports Flask 18oz' },
+  { id: 10, image: product1Img, name: 'Hydro Bottle 30oz' },
+  { id: 11, image: product2Img, name: 'Thermal Mug 14oz' },
+  { id: 12, image: product3Img, name: 'Classic Bottle 22oz' }
 ]
 
 const Product: React.FC = () => {
