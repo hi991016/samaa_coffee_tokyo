@@ -30,7 +30,7 @@
   .carouselSlide {
     position: relative;
     flex-shrink: 0;
-    cursor: pointer;
+    cursor: w-resize;
     user-select: none;
     width: max(300px, 20.833vw);
     height: auto;
