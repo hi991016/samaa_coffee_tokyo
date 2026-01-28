@@ -20,7 +20,7 @@ const Intro: React.FC = () => {
   return (
     <section className={styles.container}>
       <Header logo={false} sidebar={true} color='var(--white-cl)' />
-      <div className={styles.desc}>
+      <div className={`${styles.desc} fs`}>
         <p>
           A cup of coffee shapes a beautiful future. Our vision of a beautiful future means balance - not perfection.
           It’s where nature, people, and everyday wellness can thrive, even in life’s complexities. As climate and

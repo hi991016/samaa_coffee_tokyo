@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
           <p>🍷</p>
           <p>♻️</p>
         </div>
-        <div className={styles.address}>
+        <div className={`${styles.address} fs`}>
           <p>Open daily 9am-10pm</p>
           <a
             className='u-hovertxt'

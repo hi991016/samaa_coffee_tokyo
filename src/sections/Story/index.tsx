@@ -14,7 +14,7 @@ const Story: React.FC = () => {
     >
       <Header logo={true} sidebar={false} />
       <div className={styles.bottom}>
-        <a className='u-hovertxt' href='http://' target='_blank' rel='noopener noreferrer'>
+        <a className='fs u-hovertxt' href='http://' target='_blank' rel='noopener noreferrer'>
           Read Our Story
         </a>
       </div>
