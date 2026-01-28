@@ -31,7 +31,7 @@ const Product: React.FC = () => {
     pixelsPerSecond: 0
   })
 
-  // Duplicate products for seamless loop
+  // duplicate products for seamless loop
   const duplicatedProducts = [...products, ...products]
 
   useEffect(() => {
@@ -50,13 +50,13 @@ const Product: React.FC = () => {
       const singleSetWidth = itemWithGap * products.length
       const viewportWidth = window.innerWidth
 
-      // Calculate center offset for middle item
+      // calculate center offset for middle item
       const middleIndex = Math.floor(products.length / 2)
       const offsetToMiddle = middleIndex * itemWithGap
       const centerOffset = viewportWidth / 2 - itemWidth / 2
       const startPosition = centerOffset - offsetToMiddle
 
-      // Calculate speed: pixels per second (not per frame)
+      // calculate speed: pixels per second (not per frame)
       const pixelsPerSecond = singleSetWidth / 35
 
       configRef.current = {
@@ -71,33 +71,30 @@ const Product: React.FC = () => {
       positionRef.current = startPosition
       lastTimeRef.current = performance.now()
 
-      console.log('Animation config:', configRef.current)
+      // console.log('config:', configRef.current)
     }
 
+    // ===== carousel animate =====
     const animate = (currentTime: number) => {
       if (!containerRef.current) return
-
       const config = configRef.current
 
-      // Calculate delta time in seconds
+      // calculate delta time in seconds
       const deltaTime = (currentTime - lastTimeRef.current) / 1000
       lastTimeRef.current = currentTime
-
-      // Move position based on time elapsed (frame-rate independent)
+      // move position based on time elapsed (frame-rate independent)
       positionRef.current -= config.pixelsPerSecond * deltaTime
-
-      // Reset when we've scrolled one full set
+      // reset when we've scrolled one full set
       if (positionRef.current <= config.startPosition - config.singleSetWidth) {
         positionRef.current += config.singleSetWidth
       }
 
-      // Apply transform with translate3d for GPU acceleration
-      // Use toFixed for sub-pixel precision
+      // apply transform with translate3d, use toFixed for sub-pixel precision
       containerRef.current.style.transform = `translate3d(${positionRef.current.toFixed(2)}px, 0, 0)`
-
       animationRef.current = requestAnimationFrame(animate)
     }
 
+    // ===== wait for all images to finish loading before init the carousel =====
     if (containerRef.current) {
       const container = containerRef.current
       const images = container.querySelectorAll('img')
@@ -116,6 +113,7 @@ const Product: React.FC = () => {
       })
     }
 
+    // ===== handle resize =====
     let resizeTimeout: any
     const handleResize = () => {
       clearTimeout(resizeTimeout)

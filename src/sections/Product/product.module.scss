@@ -22,9 +22,7 @@
     display: flex;
     gap: 40px;
     will-change: transform;
-    // GPU acceleration
     transform: translateZ(0);
-    // Prevent text rendering issues during animation
     backface-visibility: hidden;
     perspective: 1000px;
   }
@@ -36,7 +34,6 @@
     user-select: none;
     width: max(300px, 20.833vw);
     height: auto;
-    // Optimize rendering
     contain: layout style paint;
 
     h2 {
