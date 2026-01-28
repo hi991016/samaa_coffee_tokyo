@@ -125,7 +125,6 @@ const Product: React.FC = () => {
         animationRef.current = requestAnimationFrame(animate)
       }, 150)
     }
-
     window.addEventListener('resize', handleResize)
 
     return () => {
