@@ -1,7 +1,34 @@
 import { useEffect, useRef } from 'react'
-import { Header } from 'src/components'
 import gsap from 'gsap'
+import { useIsMobile } from 'src/hooks'
+import { Header } from 'src/components'
 import styles from './menu.module.scss'
+
+/* ---------------------------------- image --------------------------------- */
+import img1Step1 from 'src/assets/images/menu/step1-1.webp'
+import img2Step1 from 'src/assets/images/menu/step1-2.webp'
+import img3Step1 from 'src/assets/images/menu/step1-3.webp'
+import img1Step2 from 'src/assets/images/menu/step2-1.webp'
+import img2Step2 from 'src/assets/images/menu/step2-2.webp'
+import img3Step2 from 'src/assets/images/menu/step2-3.webp'
+import img1Step3 from 'src/assets/images/menu/step3-1.webp'
+import img2Step3 from 'src/assets/images/menu/step3-2.webp'
+import img3Step3 from 'src/assets/images/menu/step3-3.webp'
+
+const IMAGE_STEPS = [
+  {
+    key: 'step1',
+    images: [img1Step1, img2Step1, img3Step1]
+  },
+  {
+    key: 'step2',
+    images: [img1Step2, img2Step2, img3Step2]
+  },
+  {
+    key: 'step3',
+    images: [img1Step3, img2Step3, img3Step3]
+  }
+]
 
 // configuration constants
 const SCROLL_SPEED = 100 // adjust speed here
@@ -9,6 +36,7 @@ const ANIMATION_DELAY = 100 // milliseconds before animation starts
 const CLONE_COUNT = 23 // number of clones for seamless loop
 
 const Menu: React.FC = () => {
+  const isMobile = useIsMobile()
   const marqueeRef = useRef<HTMLDivElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
 
@@ -105,7 +133,22 @@ const Menu: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <Header logo={false} sidebar={true} />
+      {!isMobile && <Header logo={false} sidebar={true} />}
+
+      <div className={styles.imgList}>
+        {IMAGE_STEPS.map(({ key, images }) => (
+          <div key={key} className={styles[key]}>
+            {images.map((img, index) => (
+              <div key={index}>
+                <picture>
+                  <source media='(max-width: 1024px)' srcSet={img} />
+                  <img src={img} alt='SAMAA_' />
+                </picture>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
 
       <div className={styles.center}>
         <div className={styles.marqueeWrapper}>
