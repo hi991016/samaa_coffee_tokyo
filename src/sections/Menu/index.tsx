@@ -1,6 +1,8 @@
+import { useEffect, useRef } from 'react'
 import { useIsMobile } from 'src/hooks'
 import { Header, VerticalMarquee } from 'src/components'
 import styles from './menu.module.scss'
+import gsap from 'gsap'
 
 /* ---------------------------------- image --------------------------------- */
 import img1Step1 from 'src/assets/images/menu/step1-1.webp'
@@ -32,14 +34,45 @@ const MARQUEE_ITEMS = ['COFFEE', 'BAGEL', 'NATURAL WINE', 'AND MORE']
 
 const Menu: React.FC = () => {
   const isMobile = useIsMobile()
+  const step1Ref = useRef<HTMLDivElement>(null)
+  const step2Ref = useRef<HTMLDivElement>(null)
+  const step3Ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const step1 = step1Ref.current
+    const step2 = step2Ref.current
+    const step3 = step3Ref.current
+
+    if (!step1 || !step2 || !step3) return
+
+    const timeline = gsap.timeline({ repeat: -1 })
+    const timeDuration = 0
+    gsap.set([step1, step2, step3], { autoAlpha: 0 })
+
+    timeline
+      .to(step1, { autoAlpha: 1, duration: timeDuration, delay: 0.5 })
+      .to(step2, { autoAlpha: 1, duration: timeDuration, delay: 0.5 })
+      .to(step3, { autoAlpha: 1, duration: timeDuration, delay: 0.5 })
+      .to(step3, { autoAlpha: 0, duration: timeDuration, delay: 0.5 })
+      .to(step2, { autoAlpha: 0, duration: timeDuration, delay: 0.5 })
+      .to(step1, { autoAlpha: 0, duration: timeDuration, delay: 0.5 })
+
+    return () => {
+      timeline.kill()
+    }
+  }, [])
 
   return (
     <section className={styles.container}>
       {!isMobile && <Header logo={false} sidebar={true} />}
 
       <div className={styles.imgList}>
-        {IMAGE_STEPS.map(({ key, images }) => (
-          <div key={key} className={styles[key]}>
+        {IMAGE_STEPS.map(({ key, images }, stepIndex) => (
+          <div
+            key={key}
+            className={styles[key]}
+            ref={stepIndex === 0 ? step1Ref : stepIndex === 1 ? step2Ref : step3Ref}
+          >
             {images.map((img, index) => (
               <div key={index}>
                 <picture>

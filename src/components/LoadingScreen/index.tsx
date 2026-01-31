@@ -23,12 +23,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     tl.to(logoRef.current, {
       delay: 1,
       opacity: 0,
-      duration: 0.2,
+      duration: 0.15,
       ease: 'power2.out'
     }).to(containerRef.current, {
       delay: 1,
       opacity: 0,
-      duration: 0.2,
+      duration: 0.15,
       ease: 'power2.out',
       onComplete: () => {
         setIsAppComplete(true)
