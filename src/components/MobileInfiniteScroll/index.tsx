@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, ReactNode } from 'react'
+import { useAppContext } from 'src/context/AppContext'
 import { gsap } from 'gsap'
 
 interface MobileScrollProps {
@@ -22,6 +23,8 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
   smoothing = 0.5,
   className = ''
 }) => {
+  const { isAppComplete } = useAppContext()
+  const hasShownLoading = sessionStorage.getItem('isLoading') === 'true'
   const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -119,7 +122,10 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
 
     // Auto-start after delay
     const autoStartTimeout = setTimeout(() => {
-      isPausedRef.current = false
+      if (hasShownLoading || isAppComplete) {
+        // console.log('play')
+        isPausedRef.current = false
+      }
     }, autoStartDelay)
 
     // Animation loop with GSAP ticker
@@ -180,7 +186,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [autoStartDelay, speed, sensitivity, momentumMultiplier, decayRate, smoothing])
+  }, [isAppComplete, hasShownLoading, autoStartDelay, speed, sensitivity, momentumMultiplier, decayRate, smoothing])
 
   // Expose pause/resume methods
   useEffect(() => {
