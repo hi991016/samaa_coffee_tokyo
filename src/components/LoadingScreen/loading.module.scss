@@ -14,10 +14,12 @@
   justify-content: center;
 
   .logo {
-    svg {
-      width: 80% !important;
-      margin: 0 auto;
-      overflow: visible;
+    @include maxW {
+      svg {
+        width: 80% !important;
+        margin: 0 auto;
+        overflow: visible;
+      }
     }
   }
 }
