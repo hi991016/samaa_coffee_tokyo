@@ -25,6 +25,10 @@
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+
+    @include maxW {
+      gap: 0;
+    }
   }
 
   .carouselSlide {
@@ -41,16 +45,6 @@
       margin-top: 10px;
       text-align: center;
       transition: opacity 0.15s ease-in-out;
-    }
-
-    &:hover {
-      img {
-        transform: rotate(15deg);
-      }
-
-      h2 {
-        opacity: 1;
-      }
     }
 
     picture {
@@ -75,6 +69,26 @@
         transition: transform 0.15s ease-in-out;
       }
     }
+
+    @include minW {
+      &:hover {
+        img {
+          transform: rotate(15deg);
+        }
+
+        h2 {
+          opacity: 1;
+        }
+      }
+    }
+
+    @include maxW {
+      width: max(210px, 50.725vw);
+
+      h2 {
+        display: none;
+      }
+    }
   }
 
   .bottom {
@@ -84,9 +98,8 @@
     transform: translateX(-50%);
     z-index: 1;
 
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.65;
-    letter-spacing: 0.9px;
+    @include maxW {
+      bottom: 18px;
+    }
   }
 }

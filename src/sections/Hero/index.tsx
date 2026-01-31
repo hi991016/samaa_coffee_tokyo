@@ -4,7 +4,6 @@ import { Header } from 'src/components'
 import { useIsMobile } from 'src/hooks'
 import { useAppContext } from 'src/context/AppContext'
 import logoPcAnimation from 'src/assets/animation/logo_pc.json'
-import logoSpAnimation from 'src/assets/animation/logo_sp.json'
 import styles from './hero.module.scss'
 
 const Hero: React.FC = () => {
@@ -12,7 +11,7 @@ const Hero: React.FC = () => {
   const { isAppComplete } = useAppContext()
   const hasShownLoading = sessionStorage.getItem('isLoading') === 'true'
   const options = {
-    animationData: !isMobile ? logoPcAnimation : logoSpAnimation,
+    animationData: logoPcAnimation,
     loop: true,
     autoplay: false,
     rendererSettings: {
