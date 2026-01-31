@@ -3,7 +3,8 @@ import { useLottie } from 'lottie-react'
 import { Header } from 'src/components'
 import { useIsMobile } from 'src/hooks'
 import { useAppContext } from 'src/context/AppContext'
-import logoAnimation from 'src/assets/animation/logo.json'
+import logoPcAnimation from 'src/assets/animation/logo_pc.json'
+import logoSpAnimation from 'src/assets/animation/logo_sp.json'
 import styles from './hero.module.scss'
 
 const Hero: React.FC = () => {
@@ -11,9 +12,12 @@ const Hero: React.FC = () => {
   const { isAppComplete } = useAppContext()
   const hasShownLoading = sessionStorage.getItem('isLoading') === 'true'
   const options = {
-    animationData: logoAnimation,
+    animationData: !isMobile ? logoPcAnimation : logoSpAnimation,
     loop: true,
-    autoplay: false
+    autoplay: false,
+    rendererSettings: {
+      className: isMobile ? 'lottie-mobile' : 'lottie-desktop'
+    }
   }
   const { View, play } = useLottie(options)
 

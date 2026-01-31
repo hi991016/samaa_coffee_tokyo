@@ -33,5 +33,19 @@
     .address {
       margin-left: 4px;
     }
+
+    @include maxW {
+      bottom: 18px;
+      left: 21px;
+
+      .icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+      }
+
+      .address {
+        margin-left: 1px;
+      }
+    }
   }
 }
