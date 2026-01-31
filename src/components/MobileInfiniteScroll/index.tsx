@@ -28,7 +28,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
   const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
-  // State refs
+  // state refs
   const isPausedRef = useRef(true)
   const isTouchingRef = useRef(false)
   const currentPositionRef = useRef(0)
@@ -38,19 +38,20 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
   const speedRef = useRef(speed)
   const decayProgressRef = useRef(0)
 
-  // Touch state refs
+  // touch state refs
   const startYRef = useRef(0)
   const lastYRef = useRef(0)
   const lastTimeRef = useRef(0)
   const lastVelocityTimeRef = useRef(0)
 
+  // ===== init infinie scroll =====
   useEffect(() => {
     const container = containerRef.current
     const wrapper = wrapperRef.current
 
     if (!container || !wrapper) return
 
-    // Touch handlers
+    // ----- touch handlers -----
     const handleTouchStart = (e: TouchEvent) => {
       isTouchingRef.current = true
       startYRef.current = e.touches[0]!.clientY
@@ -94,12 +95,12 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
       touchVelocityRef.current = 0
     }
 
-    // Add touch listeners
+    // add touch listeners
     container.addEventListener('touchstart', handleTouchStart, { passive: true })
     container.addEventListener('touchmove', handleTouchMove, { passive: true })
     container.addEventListener('touchend', handleTouchEnd, { passive: true })
 
-    // Initialize scroll position
+    // ----- initialize scroll position ------
     const initializeScroll = () => {
       const firstSlide = wrapper.querySelector('.first-pass section, .first-pass > *:first-child')
       if (!firstSlide) return
@@ -117,18 +118,16 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
       }
       requestAnimationFrame(checkHeight)
     }
-
     initializeScroll()
 
-    // Auto-start after delay
+    // ------ auto-start after delay ------
     const autoStartTimeout = setTimeout(() => {
       if (hasShownLoading || isAppComplete) {
-        // console.log('play')
         isPausedRef.current = false
       }
     }, autoStartDelay)
 
-    // Animation loop with GSAP ticker
+    // ------ animation loop with GSAP ticker ------
     const animate = () => {
       if (!wrapper) return
 
@@ -138,7 +137,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
         decayProgressRef.current = 0
         speedRef.current = speed
       } else {
-        // Apply momentum with decay
+        // apply momentum with decay
         if (velocityRef.current !== 0) {
           decayProgressRef.current = Math.min(decayProgressRef.current + decayRate, 1)
           const easeOut = Math.sin((decayProgressRef.current * Math.PI) / 2)
@@ -154,7 +153,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
         targetPositionRef.current += movement
       }
 
-      // Smooth lerp
+      // smooth lerp
       const delta = targetPositionRef.current - currentPositionRef.current
       if (smoothing > 0) {
         currentPositionRef.current += delta * smoothing
@@ -162,7 +161,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
         currentPositionRef.current = targetPositionRef.current
       }
 
-      // Infinite loop logic
+      // infinite loop logic
       const halfHeight = wrapper.offsetHeight / 2
       if (currentPositionRef.current >= halfHeight) {
         currentPositionRef.current -= halfHeight
@@ -172,13 +171,11 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
         targetPositionRef.current += halfHeight
       }
 
-      // Apply transform
       wrapper.style.transform = `translate3d(0, -${currentPositionRef.current}px, 0)`
     }
-
     gsap.ticker.add(animate)
 
-    // Cleanup
+    // ------ cleanup ------
     return () => {
       gsap.ticker.remove(animate)
       clearTimeout(autoStartTimeout)
@@ -188,7 +185,7 @@ const MobileInfiniteScroll: React.FC<MobileScrollProps> = ({
     }
   }, [isAppComplete, hasShownLoading, autoStartDelay, speed, sensitivity, momentumMultiplier, decayRate, smoothing])
 
-  // Expose pause/resume methods
+  // ===== expose pause/resume methods =====
   useEffect(() => {
     ;(window as any).pauseScroll = () => {
       isPausedRef.current = true
