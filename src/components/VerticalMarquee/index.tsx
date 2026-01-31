@@ -6,15 +6,9 @@ interface VerticalMarqueeProps {
   items: string[]
   speed?: number
   cloneCount?: number
-  animationDelay?: number
 }
 
-const VerticalMarquee: React.FC<VerticalMarqueeProps> = ({
-  items,
-  speed = 100,
-  cloneCount = 23,
-  animationDelay = 100
-}) => {
+const VerticalMarquee: React.FC<VerticalMarqueeProps> = ({ items, speed = 100, cloneCount = 23 }) => {
   const marqueeRef = useRef<HTMLDivElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
 
@@ -102,13 +96,13 @@ const VerticalMarquee: React.FC<VerticalMarqueeProps> = ({
     }
 
     // delay initialization to ensure DOM is fully ready
-    const initTimer = setTimeout(initAnimation, animationDelay)
+    const initTimer = setTimeout(initAnimation, 150)
 
     return () => {
       clearTimeout(initTimer)
       timelineRef.current?.kill()
     }
-  }, [speed, cloneCount, animationDelay])
+  }, [speed, cloneCount])
 
   return (
     <div className={styles.container}>

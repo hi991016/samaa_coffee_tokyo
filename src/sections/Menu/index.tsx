@@ -86,7 +86,7 @@ const Menu: React.FC = () => {
       </div>
 
       <div className={styles.center}>
-        <VerticalMarquee items={MARQUEE_ITEMS} speed={100} cloneCount={23} animationDelay={100} />
+        <VerticalMarquee items={MARQUEE_ITEMS} speed={100} cloneCount={23} />
       </div>
 
       <div className={styles.bottom}>
