@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { useLottie } from 'lottie-react'
 import { Header } from 'src/components'
 import { useIsMobile } from 'src/hooks'
-import { useLoadingContext } from 'src/context'
+import { useAppContext } from 'src/context/AppContext'
 import logoAnimation from 'src/assets/animation/logo.json'
 import styles from './hero.module.scss'
 
 const Hero: React.FC = () => {
   const isMobile = useIsMobile()
-  const { isLoadingComplete } = useLoadingContext()
+  const { isAppComplete } = useAppContext()
   const hasShownLoading = sessionStorage.getItem('isLoading') === 'true'
   const options = {
     animationData: logoAnimation,
@@ -18,10 +18,10 @@ const Hero: React.FC = () => {
   const { View, play } = useLottie(options)
 
   useEffect(() => {
-    if (hasShownLoading || isLoadingComplete) {
+    if (hasShownLoading || isAppComplete) {
       play()
     }
-  }, [isLoadingComplete, play, hasShownLoading])
+  }, [isAppComplete, play, hasShownLoading])
 
   return (
     <section className={styles.container}>

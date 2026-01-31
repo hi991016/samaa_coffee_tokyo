@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useRef } from 'react'
 import { useLottie } from 'lottie-react'
 import gsap from 'gsap'
-import { useLoadingContext } from 'src/context'
+import { useAppContext } from 'src/context/AppContext'
 import loadingAnimation from 'src/assets/animation/loading.json'
 import styles from './loading.module.scss'
 
@@ -12,7 +12,7 @@ interface LoadingScreenProps {
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLDivElement>(null)
-  const { setIsLoadingComplete } = useLoadingContext()
+  const { setIsAppComplete } = useAppContext()
 
   const handleAnimationComplete = useCallback(() => {
     sessionStorage.setItem('isLoading', 'true')
@@ -31,11 +31,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       duration: 0.2,
       ease: 'power2.out',
       onComplete: () => {
-        setIsLoadingComplete(true)
+        setIsAppComplete(true)
         onComplete()
       }
     })
-  }, [onComplete, setIsLoadingComplete])
+  }, [onComplete, setIsAppComplete])
 
   const options = {
     animationData: loadingAnimation,
